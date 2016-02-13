@@ -18,7 +18,7 @@ server.route({
     method: 'GET',
     path:'/hello', 
     handler: function (request, reply) {
-        var query = client.query('INSERT INTO test (desc) VALUES (\'test2\')');
+        var query = client.query('INSERT INTO test (descr) VALUES (\'test2\')');
         return reply('hello world');
     }
 });
