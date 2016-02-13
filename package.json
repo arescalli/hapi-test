@@ -8,11 +8,12 @@
   },
   "repository": {
     "type": "git",
-  	"url": "https://github.com/arescalli/hapi-test.git"
+    "url": "https://github.com/arescalli/hapi-test.git"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.5.2",
     "hapi": "^13.0.0",
     "pg": "^4.4.4"
   },
