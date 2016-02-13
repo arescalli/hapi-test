@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi');
 var pg = require('pg');
+var async = require('async');
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/testdeploy';
 // var client = new pg.Client(connectionString);
 // client.connect();
