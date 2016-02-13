@@ -19,6 +19,11 @@ module.exports = function (shipit) {
     }
   });
 
+  shipit.task('npm-setup', function () {
+
+    return shipit.remote('cd ' + shipit.config.deployTo + '/current && npm install');
+  });
+
   shipit.task('restart-app', function () {
     shipit.log('Starting application...');
     //return shipit.remote('pm2 start /home/aresk/apps/node-server-test/current/server.js');    
@@ -29,10 +34,12 @@ module.exports = function (shipit) {
   shipit.task('setup-app', function () {
     shipit.log('Setupping application "' + name + '" with pm2...');
     // non uso --watch! 
-    return shipit.remote('pm2 start /home/aresk/apps/node-server-test/current/server.js --name="' + name + '"');
+    shipit.log();
+    return shipit.remote('pm2 start ' + shipit.config.deployTo + '/current/server.js --name="' + name + '"');
   });
 
   shipit.on('deployed', function () {    
+    shipit.start('npm-setup');
     shipit.start('restart-app');
   });
 };
