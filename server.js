@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const Pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/bs_translation_development';
+var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/testdeploy';
 var client = new Pg.Client(connectionString);
 client.connect();
     
@@ -18,7 +18,7 @@ server.route({
     method: 'GET',
     path:'/hello', 
     handler: function (request, reply) {
-        var query = client.query('INSERT INTO translations_todos (t_key, t_value) VALUES (\'test1\', \'test2\')');
+        var query = client.query('INSERT INTO test (id, desc) VALUES (1, \'test2\')');
         return reply('hello world');
     }
 });

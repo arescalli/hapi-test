@@ -20,8 +20,9 @@ module.exports = function (shipit) {
   });
 
   shipit.task('npm-setup', function () {
-
-    return shipit.remote('cd ' + shipit.config.deployTo + '/current && npm install');
+    var r = shipit.remote('cd ' + shipit.config.deployTo + '/current && npm install');
+    shipit.emit('npm-setupped');
+    return r;
   });
 
   shipit.task('restart-app', function () {
@@ -40,6 +41,9 @@ module.exports = function (shipit) {
 
   shipit.on('deployed', function () {    
     shipit.start('npm-setup');
+  });
+
+  shipit.on('npm-setupped', function() {
     shipit.start('restart-app');
   });
 };
