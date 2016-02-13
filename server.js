@@ -1,10 +1,10 @@
 'use strict';
 
 const Hapi = require('hapi');
-const Pg = require('pg');
+var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/testdeploy';
-var client = new Pg.Client(connectionString);
-client.connect();
+// var client = new pg.Client(connectionString);
+// client.connect();
     
 // Create a server with a host and port
 const server = new Hapi.Server();
